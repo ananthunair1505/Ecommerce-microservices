@@ -5,10 +5,10 @@ module.exports = {
         operationId: 'getProduct',
         parameters: [
             {
-                name: "_id",
+                name: "id",
                 in: "path",
                 schema: {
-                    $ref: '#/components/schemas/_id'
+                    $ref: '#/components/schemas/id'
                 },
                 required: true,
                 description: "A single Product record id"

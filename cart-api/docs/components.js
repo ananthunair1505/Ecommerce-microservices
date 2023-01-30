@@ -8,9 +8,9 @@ module.exports = {
             },
 
             productId: {
-                type: 'string',
+                type: 'number',
                 description: "Product Identification Number",
-                example: "63d31b04838e0715315c5ebc"
+                example: "113"
             },
 
             Product: {
@@ -23,9 +23,9 @@ module.exports = {
                     },
 
                     productId: {
-                        type: 'string',
-                        description: "Product identification Number",
-                        example: "63d64dc70055fc6d0cbeb306"
+                        type: 'number',
+                        description: "Product Identification Number",
+                        example: "113"
                     },
 
                     name: {
@@ -40,9 +40,9 @@ module.exports = {
                 type: 'object',
                 properties: {
                     productId: {
-                        type: 'string',
-                        description: "Product identification Number",
-                        example: "63d64dc70055fc6d0cbeb306"
+                        type: 'number',
+                        description: "Product Identification Number",
+                        example: "113"
                     },
 
                     name: {

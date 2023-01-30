@@ -10,7 +10,7 @@ module.exports = {
             ...createProduct,
             ...getProducts
         },
-        '/products/{_id}': {
+        '/products/{id}': {
             ...getProduct,
             ...deleteProduct,
             ...updateProduct

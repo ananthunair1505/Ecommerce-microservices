@@ -9,7 +9,7 @@ exports.getAll = (req, res) => {
 }
 
 exports.get = (req, res) => {
-    const productId = req.params.rid;
+    const productId = parseInt(req.params.rid);
     CartDAO.get(productId).then(result => {
         if(!result){
             return res.sendStatus(404);
@@ -24,7 +24,7 @@ exports.get = (req, res) => {
 
 exports.addProduct = (req, res) => {
     const {productId, name} = req.body;
-    const product = {productId: productId, name: name};
+    const product = {productId: parseInt(productId), name: name};
 
     CartDAO.addProduct(product).then(result => {
         res.status(201).json({data: result, message: "Success, adding product to cart"});
@@ -34,7 +34,7 @@ exports.addProduct = (req, res) => {
 }
 
 exports.removeProduct = async (req, res) => {
-    const productId = req.params.rid;
+    const productId = parseInt(req.params.rid);
 
     const product = await CartDAO.get(productId);
 

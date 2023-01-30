@@ -11,9 +11,9 @@ class CartDAO {
         }
     }
 
-    static async get(productIdDB) {
+    static async get(productId) {
         try {
-            const product = await Cart.findOne({productId: productIdDB});
+            const product = await Cart.findOne({productId: productId});
             return product;
         } catch (error) {
             console.log(`could not fetch product : ${error}`);
@@ -29,9 +29,9 @@ class CartDAO {
         }
     }
 
-    static async removeProduct(productIdDB) {
+    static async removeProduct(productId) {
         try {
-            const deleteResponse = await Cart.findOneAndDelete({productId: productIdDB});
+            const deleteResponse = await Cart.findOneAndDelete({productId: productId});
             return deleteResponse;
         } catch (error) {
             console.log(`Could not remove product: ${error}`);

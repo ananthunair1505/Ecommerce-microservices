@@ -9,8 +9,8 @@ exports.getAll = (req, res) => {
 }
 
 exports.get = (req, res) => {
-    var _id = req.params.rid;
-    DAO.getProduct(_id).then(result => {
+    var id = req.params.rid;
+    DAO.getProduct(id).then(result => {
         if(!result){
             res.status(404).json({data: [], message: "Product cannot be found", internal_code: "Invalid Id"});
         }
@@ -35,18 +35,18 @@ exports.create = async (req, res) => {
 }
 
 exports.edit = async (req, res) => {
-    var _id = req.params.rid;
+    var productId = req.params.rid;
     var { id, name } = req.body;
     var product = { id: parseInt(id), name: name };
 
     // Check if Product is present or not
-    const prod = await DAO.getProduct(_id);
+    const prod = await DAO.getProduct(productId);
 
     if(!prod){
         return res.sendStatus(404);
     }
 
-    DAO.updateProduct(_id, product).then(result => {
+    DAO.updateProduct(productId, product).then(result => {
         res.status(200).json({data: result, message: "Success, Updating Product" });
     }, eMsg => {
         res.status(500).json({data: null, message: "Error, Updating Product" });    
@@ -54,16 +54,16 @@ exports.edit = async (req, res) => {
 }
 
 exports.delete = async (req, res) => {
-    var _id = req.params.rid;
+    var id = req.params.rid;
 
      // Check if Product is present or not
-     const product = await DAO.getProduct(_id);
+     const product = await DAO.getProduct(id);
 
      if(!product){
          return res.sendStatus(404);
      }
 
-    DAO.deleteProduct(_id).then(_ => {
+    DAO.deleteProduct(id).then(_ => {
         res.status(204).json({data: null, message: "Success, Deleting Product" });
     }, eMsg => {
         res.status(500).json({data: null, message: "Error, Deleting Product" });

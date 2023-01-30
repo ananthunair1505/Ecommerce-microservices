@@ -7,6 +7,12 @@ module.exports = {
                 example: "63d31b04838e0715315c5ebc"
             },
 
+            id: {
+                type: 'number',
+                description: "Product identification Number",
+                example: "123"
+            },
+
             Product: {
                 type: 'object',
                 properties: {

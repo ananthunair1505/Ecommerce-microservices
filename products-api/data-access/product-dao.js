@@ -10,9 +10,9 @@ class ProductDAO {
         }
     }
 
-    static async getProduct(productIdDB) {
+    static async getProduct(productId) {
         try {
-            const singleProduct = await Product.findById({_id: productIdDB});
+            const singleProduct = await Product.findOne({id: productId});
             return singleProduct;
         } catch (error) {
             console.log(`Could not fetch Product ${error}`);
@@ -28,18 +28,18 @@ class ProductDAO {
         }
     }
 
-    static async updateProduct(productIdDB, product) {
+    static async updateProduct(productId, product) {
         try {
-            const updateResponse = await Product.findOneAndUpdate({ _id: productIdDB }, product);
+            const updateResponse = await Product.findOneAndUpdate({ id: productId }, product);
             return updateResponse;
         } catch (error) {
             console.log(`Could not update product ${error}`);
         }
     }
 
-    static async deleteProduct(productIdDB) {
+    static async deleteProduct(productId) {
         try {
-            const deletedResponse = await Product.findOneAndDelete({ _id: productIdDB });
+            const deletedResponse = await Product.findOneAndDelete({ id: productId });
             return deletedResponse;
         } catch (error) {
             console.log(`Could not delete product ${error}`);

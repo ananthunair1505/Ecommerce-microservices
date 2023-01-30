@@ -5,10 +5,10 @@ module.exports = {
         operationId: 'deleteProduct',
         parameters: [
             {
-                name: "_id",
+                name: "id",
                 in: "path",
                 schema: {
-                    $ref: "#/components/schemas/_id"
+                    $ref: "#/components/schemas/id"
                 },
                 required: true,
                 description: "Record Id of product to be deleted"
