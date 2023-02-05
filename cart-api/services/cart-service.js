@@ -1,7 +1,7 @@
 const { response } = require('express');
 const Cart = require('../models/cart');
 
-class CartDAO {
+class CartService {
     static async getAll() {
         try{
             const allProducts = await Cart.find();
@@ -39,4 +39,4 @@ class CartDAO {
     }
 }
 
-module.exports = CartDAO;
+module.exports = CartService;

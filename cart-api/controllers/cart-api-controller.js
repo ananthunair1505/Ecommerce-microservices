@@ -1,7 +1,7 @@
-const CartDAO = require('../data-access/cart-dao');
+const CartService = require('../services/cart-service');
 
 exports.getAll = (req, res) => {
-    CartDAO.getAll().then(result => {
+    CartService.getAll().then(result => {
         res.status(200).json({data: result, message: "Sucess, fetching cart"});
     }).catch(error => {
         res.status(500).json({data: [], message: "Error, fetching Cart"});
@@ -10,7 +10,7 @@ exports.getAll = (req, res) => {
 
 exports.get = (req, res) => {
     const productId = parseInt(req.params.rid);
-    CartDAO.get(productId).then(result => {
+    CartService.get(productId).then(result => {
         if(!result){
             return res.sendStatus(404);
         }
@@ -26,7 +26,7 @@ exports.addProduct = (req, res) => {
     const {productId, name} = req.body;
     const product = {productId: parseInt(productId), name: name};
 
-    CartDAO.addProduct(product).then(result => {
+    CartService.addProduct(product).then(result => {
         res.status(201).json({data: result, message: "Success, adding product to cart"});
     }).catch(error => {
         res.status(500).json({data: null, message: "Error, could not add product to cart"});
@@ -36,13 +36,13 @@ exports.addProduct = (req, res) => {
 exports.removeProduct = async (req, res) => {
     const productId = parseInt(req.params.rid);
 
-    const product = await CartDAO.get(productId);
+    const product = await   CartService.get(productId);
 
     if(!product){
         return res.sendStatus(404);
     }
 
-    CartDAO.removeProduct(productId).then(_ => {
+    CartService.removeProduct(productId).then(_ => {
         res.status(204).json({data: null, message: "Success, removed product from cart"});
     }).catch(error => {
         res.status(500).json({data: null, message: "Error, could not remove product from cart"});

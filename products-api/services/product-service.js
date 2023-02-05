@@ -1,6 +1,6 @@
 const Product = require('../models/product');
 
-class ProductDAO {
+class ProductService {
     static async getAllProducts() {
         try {
             const allProducts = await Product.find();
@@ -47,4 +47,4 @@ class ProductDAO {
     }
 }
 
-module.exports = ProductDAO;
+module.exports = ProductService;
